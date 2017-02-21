@@ -13,7 +13,7 @@ sklikApi:
 
 Použití
 ```php
-/** @var NAttreid\SklikApi\SklikApiFactory @inject */
+/** @var NAttreid\SklikApi\ISklikApiFactory @inject */
 public $sklikApiFactory;
 
 protected function createComponentSklikApi() {
