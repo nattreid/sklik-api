@@ -1,0 +1,9 @@
+web:
+    hooks:
+        sklikApi:
+            title: "SklikApi"
+            retargetingId: "Vaše \"Sklik retargeting ID\""
+            registrationId: "Vaše \"ID pro měření registrací\""
+            conversionId: "Vaše \"ID pro měření objednávek\""
+            retargeting: "Retargeting"
+            conversionAndRegistration: "Konverze a registrace"

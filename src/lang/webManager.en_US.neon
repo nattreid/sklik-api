@@ -1,0 +1,9 @@
+web:
+    hooks:
+        sklikApi:
+            title: "SklikApi"
+            retargetingId: "Your \"Sklik Retargeting ID\""
+            registrationId: "Your \"Tracking ID Registrations\""
+            conversionId: "Your \"Tracking ID Orders\""
+            retargeting: "Retargeting"
+            conversionAndRegistration: "Conversion and Registration"

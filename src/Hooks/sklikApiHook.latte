@@ -1,0 +1,27 @@
+<ul class="nav nav-tabs">
+    <li class="active">
+        <a data-toggle="tab" href="#retargeting">{_'webManager.web.hooks.sklikApi.retargeting'}</a>
+    </li>
+    <li>
+        <a data-toggle="tab" href="#conversionAndRegistration">{_'webManager.web.hooks.sklikApi.conversionAndRegistration'}</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div id="retargeting" class="in active tab-pane fade">
+        <pre>
+&lt;script type=&quot;text/javascript&quot;&gt;
+    /* &lt;![CDATA[ */
+    var seznam_retargeting_id = <strong class="text-danger">12345</strong>;
+    /* ]]&gt; */
+&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;//c.imedia.cz/js/retargeting.js&quot;&gt;&lt;/script&gt;
+        </pre>
+    </div>
+    <div id="conversionAndRegistration" class="tab-pane fade">
+        <pre>
+&lt;!-- Měřic&iacute; k&oacute;d Sklik.cz --&gt;
+&lt;iframe width=&quot;119&quot; height=&quot;22&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; src=&quot;//c.imedia.cz/checkConversion?c=<strong class="text-danger">12345678</strong>&amp;color=ffffff&amp;v=&quot; class=&quot;no-css&quot;&gt;&lt;/iframe&gt;
+        </pre>
+    </div>
+</div>
