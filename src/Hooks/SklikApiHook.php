@@ -1,9 +1,12 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\SklikApi\Hooks;
 
 use NAttreid\Form\Form;
 use NAttreid\WebManager\Services\Hooks\HookFactory;
+use Nette\Utils\ArrayHash;
 
 /**
  * Class SklikApiHook
@@ -21,7 +24,7 @@ class SklikApiHook extends HookFactory
 	}
 
 	/** @return Form */
-	public function create()
+	public function create(): Form
 	{
 		$form = $this->formFactory->create();
 		$form->setAjaxRequest();
@@ -42,7 +45,7 @@ class SklikApiHook extends HookFactory
 		return $form;
 	}
 
-	public function googleApiFormSucceeded(Form $form, $values)
+	public function googleApiFormSucceeded(Form $form, ArrayHash $values)
 	{
 		$this->configurator->sklikRetargetingId = $values->retargetingId;
 		$this->configurator->sklikRegistrationId = $values->registrationId;

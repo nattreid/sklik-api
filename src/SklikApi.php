@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\SklikApi;
 
 use Nette\Application\UI\Control;
@@ -20,12 +22,12 @@ class SklikApi extends Control
 	/** @var int */
 	private $conversionId;
 
-	public function __construct($retargetingId, $registrationId, $conversionId)
+	public function __construct(int $retargetingId, int $registrationId, int $conversionId)
 	{
 		parent::__construct();
-		$this->retargetingId = intval($retargetingId);
-		$this->registrationId = intval($registrationId);
-		$this->conversionId = intval($conversionId);
+		$this->retargetingId = $retargetingId;
+		$this->registrationId = $registrationId;
+		$this->conversionId = $conversionId;
 	}
 
 	public function render()
