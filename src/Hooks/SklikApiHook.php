@@ -19,7 +19,7 @@ class SklikApiHook extends HookFactory
 	/** @var IConfigurator */
 	protected $configurator;
 
-	public function init()
+	public function init(): void
 	{
 		$this->latte = __DIR__ . '/sklikApiHook.latte';
 	}
@@ -46,7 +46,7 @@ class SklikApiHook extends HookFactory
 		return $form;
 	}
 
-	public function googleApiFormSucceeded(Form $form, ArrayHash $values)
+	public function googleApiFormSucceeded(Form $form, ArrayHash $values): void
 	{
 		$this->configurator->sklikRetargetingId = $values->retargetingId;
 		$this->configurator->sklikRegistrationId = $values->registrationId;

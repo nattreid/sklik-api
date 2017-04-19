@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace NAttreid\SklikApi;
 
@@ -30,21 +30,21 @@ class SklikApi extends Control
 		$this->conversionId = $conversionId;
 	}
 
-	public function render()
+	public function render(): void
 	{
 		$this->template->retargetingId = $this->retargetingId;
 		$this->template->setFile(__DIR__ . '/templates/default.latte');
 		$this->template->render();
 	}
 
-	public function renderConversion()
+	public function renderConversion(): void
 	{
 		$this->template->conversionId = $this->conversionId;
 		$this->template->setFile(__DIR__ . '/templates/conversion.latte');
 		$this->template->render();
 	}
 
-	public function renderRegistration()
+	public function renderRegistration(): void
 	{
 		$this->template->registrationId = $this->registrationId;
 		$this->template->setFile(__DIR__ . '/templates/registration.latte');
