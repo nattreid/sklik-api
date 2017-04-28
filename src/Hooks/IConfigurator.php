@@ -7,9 +7,7 @@ namespace NAttreid\SklikApi\Hooks;
 /**
  * Interface IConfigurator
  *
- * @property int $sklikRetargetingId
- * @property int $sklikRegistrationId
- * @property int $sklikConversionId
+ * @property SklikApiConfig $sklikApi
  *
  * @author Attreid <attreid@gmail.com>
  */

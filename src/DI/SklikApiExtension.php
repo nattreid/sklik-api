@@ -1,11 +1,12 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace NAttreid\SklikApi\DI;
 
 use NAttreid\Cms\Configurator\Configurator;
 use NAttreid\Cms\DI\ExtensionTranslatorTrait;
+use NAttreid\SklikApi\Hooks\SklikApiConfig;
 use NAttreid\SklikApi\Hooks\SklikApiHook;
 use NAttreid\SklikApi\ISklikApiFactory;
 use NAttreid\SklikApi\SklikApi;
@@ -42,14 +43,17 @@ class SklikApiExtension extends CompilerExtension
 				'webManager'
 			]);
 
-			$config['retargetingId'] = new Statement('?->sklikRetargetingId', ['@' . Configurator::class]);
-			$config['registrationId'] = new Statement('?->sklikRegistrationId', ['@' . Configurator::class]);
-			$config['conversionId'] = new Statement('?->sklikConversionId', ['@' . Configurator::class]);
+			$sklikApi = new Statement('?->sklikApi \?\? new ' . SklikApiConfig::class, ['@' . Configurator::class]);
+		} else {
+			$sklikApi = new SklikApiConfig;
+			$sklikApi->retargetingId = $config['retargetingId'];
+			$sklikApi->registrationId = $config['registrationId'];
+			$sklikApi->conversionId = $config['conversionId'];
 		}
 
 		$builder->addDefinition($this->prefix('factory'))
 			->setImplement(ISklikApiFactory::class)
 			->setFactory(SklikApi::class)
-			->setArguments([$config['retargetingId'], $config['registrationId'], $config['conversionId']]);
+			->setArguments([$sklikApi]);
 	}
 }

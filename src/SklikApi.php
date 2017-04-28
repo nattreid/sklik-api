@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NAttreid\SklikApi;
 
+use NAttreid\SklikApi\Hooks\SklikApiConfig;
 use Nette\Application\UI\Control;
 
 /**
@@ -13,40 +14,32 @@ use Nette\Application\UI\Control;
  */
 class SklikApi extends Control
 {
-	/** @var int */
-	private $retargetingId;
+	/** @var SklikApiConfig */
+	private $config;
 
-	/** @var int */
-	private $registrationId;
-
-	/** @var int */
-	private $conversionId;
-
-	public function __construct(int $retargetingId, int $registrationId, int $conversionId)
+	public function __construct(SklikApiConfig $config)
 	{
 		parent::__construct();
-		$this->retargetingId = $retargetingId;
-		$this->registrationId = $registrationId;
-		$this->conversionId = $conversionId;
+		$this->config = $config;
 	}
 
 	public function render(): void
 	{
-		$this->template->retargetingId = $this->retargetingId;
+		$this->template->retargetingId = $this->config->retargetingId;
 		$this->template->setFile(__DIR__ . '/templates/default.latte');
 		$this->template->render();
 	}
 
 	public function renderConversion(): void
 	{
-		$this->template->conversionId = $this->conversionId;
+		$this->template->conversionId = $this->config->conversionId;
 		$this->template->setFile(__DIR__ . '/templates/conversion.latte');
 		$this->template->render();
 	}
 
 	public function renderRegistration(): void
 	{
-		$this->template->registrationId = $this->registrationId;
+		$this->template->registrationId = $this->config->registrationId;
 		$this->template->setFile(__DIR__ . '/templates/registration.latte');
 		$this->template->render();
 	}

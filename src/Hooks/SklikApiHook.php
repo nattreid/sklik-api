@@ -22,6 +22,10 @@ class SklikApiHook extends HookFactory
 	public function init(): void
 	{
 		$this->latte = __DIR__ . '/sklikApiHook.latte';
+
+		if (!$this->configurator->sklikApi) {
+			$this->configurator->sklikApi = new SklikApiConfig;
+		}
 	}
 
 	/** @return Component */
@@ -30,14 +34,14 @@ class SklikApiHook extends HookFactory
 		$form = $this->formFactory->create();
 		$form->setAjaxRequest();
 
-		$form->addText('retargetingId', 'webManager.web.hooks.sklikApi.retargetingId')
-			->setDefaultValue($this->configurator->sklikRetargetingId);
+		$form->addInteger('retargetingId', 'webManager.web.hooks.sklikApi.retargetingId')
+			->setDefaultValue($this->configurator->sklikApi->retargetingId);
 
-		$form->addText('registrationId', 'webManager.web.hooks.sklikApi.registrationId')
-			->setDefaultValue($this->configurator->sklikRegistrationId);
+		$form->addInteger('registrationId', 'webManager.web.hooks.sklikApi.registrationId')
+			->setDefaultValue($this->configurator->sklikApi->registrationId);
 
-		$form->addText('conversionId', 'webManager.web.hooks.sklikApi.conversionId')
-			->setDefaultValue($this->configurator->sklikConversionId);
+		$form->addInteger('conversionId', 'webManager.web.hooks.sklikApi.conversionId')
+			->setDefaultValue($this->configurator->sklikApi->conversionId);
 
 		$form->addSubmit('save', 'form.save');
 
@@ -48,9 +52,13 @@ class SklikApiHook extends HookFactory
 
 	public function googleApiFormSucceeded(Form $form, ArrayHash $values): void
 	{
-		$this->configurator->sklikRetargetingId = $values->retargetingId;
-		$this->configurator->sklikRegistrationId = $values->registrationId;
-		$this->configurator->sklikConversionId = $values->conversionId;
+		$config = $this->configurator->sklikApi;
+
+		$config->retargetingId = $values->retargetingId ?: null;
+		$config->registrationId = $values->registrationId ?: null;
+		$config->conversionId = $values->conversionId ?: null;
+
+		$this->configurator->sklikApi = $config;
 
 		$this->flashNotifier->success('default.dataSaved');
 	}
