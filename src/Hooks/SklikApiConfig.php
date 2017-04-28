@@ -28,32 +28,32 @@ class SklikApiConfig
 	/** @var int */
 	private $conversionId;
 
-	public function getRetargetingId(): ?int
+	protected function getRetargetingId(): ?int
 	{
 		return $this->retargetingId;
 	}
 
-	public function setRetargetingId(?int $retargetingId)
+	protected function setRetargetingId(?int $retargetingId)
 	{
 		$this->retargetingId = $retargetingId;
 	}
 
-	public function getRegistrationId(): ?int
+	protected function getRegistrationId(): ?int
 	{
 		return $this->registrationId;
 	}
 
-	public function setRegistrationId(?int $registrationId)
+	protected function setRegistrationId(?int $registrationId)
 	{
 		$this->registrationId = $registrationId;
 	}
 
-	public function getConversionId(): ?int
+	protected function getConversionId(): ?int
 	{
 		return $this->conversionId;
 	}
 
-	public function setConversionId(?int $conversionId)
+	protected function setConversionId(?int $conversionId)
 	{
 		$this->conversionId = $conversionId;
 	}
