@@ -43,7 +43,7 @@ class SklikApiExtension extends CompilerExtension
 				'webManager'
 			]);
 
-			$sklikApi = new Statement('?->sklikApi \?\? new ' . SklikApiConfig::class, ['@' . Configurator::class]);
+			$sklikApi = new Statement('?->sklikApi \?: new ' . SklikApiConfig::class, ['@' . Configurator::class]);
 		} else {
 			$sklikApi = new SklikApiConfig;
 			$sklikApi->retargetingId = $config['retargetingId'];
