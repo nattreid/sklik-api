@@ -37,7 +37,7 @@ class SklikApiExtension extends CompilerExtension
 		$hook = $builder->getByType(HookService::class);
 		if ($hook) {
 			$builder->addDefinition($this->prefix('sklikApiHook'))
-				->setClass(SklikApiHook::class);
+				->setType(SklikApiHook::class);
 
 			$this->setTranslation(__DIR__ . '/../lang/', [
 				'webManager'
