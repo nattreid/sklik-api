@@ -19,6 +19,11 @@ public $sklikApiFactory;
 protected function createComponentSklikApi() {
     return $this->sklikApiFactory->create();
 }
+
+public function renderDefault() {
+    $this['sklikApi']->conversion(500); // konverze
+    $this['sklikApi']->registration(); // registrace
+}
 ```
 
 v @layout.latte
@@ -27,26 +32,6 @@ v @layout.latte
 <body>
     <!-- html kod -->
     {control sklikApi}
-</body>
-</html>
-```
-
-na konverzní stránce (nejčastěji 'ThankYou')
-```html
-<html>
-<body>
-    <!-- html kod -->
-    {control sklikApi:conversion}
-</body>
-</html>
-```
-
-na stránce registrace zákazníka
-```html
-<html>
-<body>
-    <!-- html kod -->
-    {control sklikApi:registration}
 </body>
 </html>
 ```

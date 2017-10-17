@@ -6,3 +6,9 @@
     </script>
     <script type="text/javascript" src="//c.imedia.cz/js/retargeting.js"></script>
 {/if}
+
+{foreach $conversions as $conversion}
+    <!-- Měřicí kód Sklik.cz -->
+    <iframe width="119" height="22" frameborder="0" scrolling="no"
+            src="//c.imedia.cz/checkConversion?c={$conversion->id|noescape}&color=ffffff&v={$conversion->value|noescape}" class="no-css"></iframe>
+{/foreach}
