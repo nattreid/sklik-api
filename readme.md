@@ -3,7 +3,7 @@
 Nastavení v **config.neon**
 ```neon
 extensions:
-    sklikApi: NAtrreid\SklikApi\DI\SklikApiExtension
+    sklikApi: NAttreid\SklikApi\DI\SklikApiExtension
 
 sklikApi:
     retargetingId: 12345
