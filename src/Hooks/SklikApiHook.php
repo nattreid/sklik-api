@@ -45,12 +45,12 @@ class SklikApiHook extends HookFactory
 
 		$form->addSubmit('save', 'form.save');
 
-		$form->onSuccess[] = [$this, 'googleApiFormSucceeded'];
+		$form->onSuccess[] = [$this, 'sklikApiFormSucceeded'];
 
 		return $form;
 	}
 
-	public function googleApiFormSucceeded(Form $form, ArrayHash $values): void
+	public function sklikApiFormSucceeded(Form $form, ArrayHash $values): void
 	{
 		$config = $this->configurator->sklikApi;
 

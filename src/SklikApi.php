@@ -66,7 +66,5 @@ class SklikApi extends Control
 
 interface ISklikApiFactory
 {
-
-	/** @return SklikApi */
-	public function create();
+	public function create(): SklikApi;
 }
