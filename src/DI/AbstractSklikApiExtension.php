@@ -32,7 +32,7 @@ abstract class AbstractSklikApiExtension extends CompilerExtension
 		$builder = $this->getContainerBuilder();
 		$config = $this->validateConfig($this->defaults, $this->getConfig());
 
-		$sklikApi = $this->prepareHook($config);
+		$sklikApi = $this->prepareConfig($config);
 
 		$builder->addDefinition($this->prefix('factory'))
 			->setImplement(ISklikApiFactory::class)
@@ -40,12 +40,13 @@ abstract class AbstractSklikApiExtension extends CompilerExtension
 			->setArguments([$sklikApi]);
 	}
 
-	protected function prepareHook(array $config)
+	protected function prepareConfig(array $config)
 	{
-		$sklikApi = new SklikApiConfig;
-		$sklikApi->retargetingId = $config['retargetingId'];
-		$sklikApi->registrationId = $config['registrationId'];
-		$sklikApi->conversionId = $config['conversionId'];
-		return $sklikApi;
+		$builder = $this->getContainerBuilder();
+		return $builder->addDefinition($this->prefix('config'))
+			->setFactory(SklikApiConfig::class)
+			->addSetup('$retargetingId', [$config['retargetingId']])
+			->addSetup('$registrationId', [$config['registrationId']])
+			->addSetup('$conversionId', [$config['conversionId']]);
 	}
 }
