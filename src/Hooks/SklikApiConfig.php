@@ -9,9 +9,9 @@ use Nette\SmartObject;
 /**
  * Class SklikApiConfig
  *
- * @property int $retargetingId
- * @property int $registrationId
- * @property int $conversionId
+ * @property int|null $retargetingId
+ * @property int|null $registrationId
+ * @property int|null $conversionId
  *
  * @author Attreid <attreid@gmail.com>
  */
@@ -19,13 +19,13 @@ class SklikApiConfig
 {
 	use SmartObject;
 
-	/** @var int */
+	/** @var int|null */
 	private $retargetingId;
 
-	/** @var int */
+	/** @var int|null */
 	private $registrationId;
 
-	/** @var int */
+	/** @var int|null */
 	private $conversionId;
 
 	protected function getRetargetingId(): ?int
