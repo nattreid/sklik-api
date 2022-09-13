@@ -1,19 +1,26 @@
-{if $retargetingId}
-    <script type="text/javascript">
-        /* <![CDATA[ */
-        var seznam_retargeting_id = {$retargetingId};
-        /* ]]> */
-    </script>
-    <script type="text/javascript" src="//c.imedia.cz/js/retargeting.js"></script>
+{if $retargetingId || isset($conversion)}
+	<script type="text/javascript" src="https://c.seznam.cz/js/rc.js"></script>
+	<script>
+		{ifset $conversion}
+			var conversionConf = {
+				id: {$conversion->id|noescape},
+				{if $conversion->value}
+					value: {$conversion->value|noescape},
+				{/if}
+				consent: 1
+			};
+			if (window.rc && window.rc.conversionHit) {
+				window.rc.conversionHit(conversionConf);
+			}
+		{/ifset}
+		{if $retargetingId}
+			var retargetingConf = {
+				rtgId: {$retargetingId},
+				consent: 1
+			};
+			if (window.rc && window.rc.retargetingHit) {
+				window.rc.retargetingHit(retargetingConf);
+			}
+		{/if}
+	</script>
 {/if}
-
-{foreach $conversions as $conversion}
-    <!-- Měřicí kód Sklik.cz -->
-    <script type="text/javascript">
-        var seznam_cId = {$conversion->id|noescape};
-        {if $conversion->value}
-        var seznam_value = {$conversion->value|noescape};
-        {/if}
-    </script>
-    <script type="text/javascript" src="//www.seznam.cz/rs/static/rc.js"></script>
-{/foreach}
